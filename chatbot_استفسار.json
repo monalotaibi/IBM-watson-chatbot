@@ -1,0 +1,309 @@
+{
+  "intents": [
+    {
+      "intent": "استفسارات",
+      "examples": [
+        {
+          "text": "ابغى اسأل عن الورشة؟"
+        },
+        {
+          "text": "الساعة كم؟"
+        },
+        {
+          "text": "شكرا جزيلاً على مساعدتك"
+        },
+        {
+          "text": "ماهي الأيام التي تقدموا فيها الورشة؟"
+        },
+        {
+          "text": "ماهي المدة الزمنية ؟"
+        },
+        {
+          "text": "هل التسجيل متاح؟"
+        },
+        {
+          "text": "هل الورشة مجانا؟"
+        },
+        {
+          "text": "هل حضوري او اون لاين"
+        },
+        {
+          "text": "يعطيك العافية"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "تحية",
+      "examples": [
+        {
+          "text": "السلام عليكم"
+        },
+        {
+          "text": "السلام عليكم ورحمة الله وبركاته"
+        },
+        {
+          "text": "اهلا"
+        },
+        {
+          "text": "صباح الخير"
+        },
+        {
+          "text": "مرحبا"
+        },
+        {
+          "text": "مساء الخير"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "مساعدة",
+      "examples": [
+        {
+          "text": "ابغى منك خدمة؟"
+        },
+        {
+          "text": "احتاج مساعدة ممكن؟"
+        },
+        {
+          "text": "تقدر تساعدني؟"
+        },
+        {
+          "text": "شكرا لك على مساعدة"
+        },
+        {
+          "text": "لدي مشكلة تقدر تساعدني؟"
+        },
+        {
+          "text": "ممكن تساعدني؟"
+        },
+        {
+          "text": "يعطيك العافية"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "السؤال",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "اريد",
+          "synonyms": [
+            "ابغى استفسر"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "ماهي",
+          "synonyms": [
+            "ايش "
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "الشكر",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "شكرا",
+          "synonyms": [
+            "شكرا جزيلاً",
+            "مشكور",
+            "يعطيك العافية"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    },
+    "from-sample": true
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "مساعدةي",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "نعم تفضل "
+              },
+              {
+                "text": "ماهي المشكلة؟"
+              },
+              {
+                "text": "نعم اقدر اساعدك"
+              },
+              {
+                "text": "اكتب المشكلة بتفصيل"
+              },
+              {
+                "text": "ان شاء الله اقدر اساعد"
+              },
+              {
+                "text": "العفو انا في خدمة"
+              },
+              {
+                "text": "ولو العفو، من واجبنا المساعدة"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#مساعدة",
+      "dialog_node": "node_10_1625188981410",
+      "previous_sibling": "مرحبا"
+    },
+    {
+      "type": "frame",
+      "title": "استفسارات",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "تفضل ماهو سؤالك؟"
+              },
+              {
+                "text": "الأحد والثلاثاء"
+              },
+              {
+                "text": "من الساعة 5-6 مساء"
+              },
+              {
+                "text": "المدة شهر10 كاملأ"
+              },
+              {
+                "text": "نعم التسجيل متاح "
+              },
+              {
+                "text": "نعم الورشة مجاناً"
+              },
+              {
+                "text": "اون لاين"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#استفسارات",
+      "dialog_node": "node_2_1625138757156",
+      "previous_sibling": "node_3_1625143800626"
+    },
+    {
+      "type": "standard",
+      "title": "تحية",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "صباح النور"
+              },
+              {
+                "text": "مساء النور ، تفضل ماهو سؤالك؟"
+              },
+              {
+                "text": "وعليكم والسلام ورحمة الله وبركاته"
+              },
+              {
+                "text": "وعيلكم السلام"
+              },
+              {
+                "text": "اهلا بك"
+              },
+              {
+                "text": "اهلا بك، كيف اقدر اساعدك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#تحية",
+      "dialog_node": "node_3_1625143800626",
+      "previous_sibling": "node_10_1625188981410"
+    },
+    {
+      "type": "standard",
+      "title": "أي شيء آخر",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "لم أفهم، يمكنك محاولة اعادة الصياغة"
+              },
+              {
+                "text": "هل يمكنك اعادة صياغة عبارتك؟ أنا لا فهم"
+              },
+              {
+                "text": "لم أفهم قصدك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "أي شيء آخر",
+      "previous_sibling": "node_2_1625138757156",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "مرحبا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مرحبا، كيف يمكنني مساعدتك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "مرحبا"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": ":هل قصدت",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "كل ما سبق خطأ"
+    },
+    "human_agent_assist": {
+      "prompt": ":هل قصدت"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "تحدث",
+  "language": "ar",
+  "description": ""
+}
